@@ -1,0 +1,11 @@
+{
+  "name": "chains",
+  "version": "0.0.0",
+  "description": "A package to get chain metadata",
+  "main": "index.js",
+  "author": "Brett Cleary",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
