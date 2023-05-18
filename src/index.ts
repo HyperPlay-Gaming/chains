@@ -5,9 +5,15 @@ import { fetchChainMetadata } from "./utils";
 const commonChains = chains as ChainMap;
 
 export async function getChainMetadata(
-  chainid: string
+  chainId: string
 ): Promise<ChainMetadata> {
-  if (Object.hasOwn(commonChains, chainid)) return commonChains[chainid];
-  const metadata = await fetchChainMetadata(chainid);
+  if (Object.hasOwn(commonChains, chainId)) return commonChains[chainId];
+  const metadata = await fetchChainMetadata(chainId);
   return metadata;
 }
+
+export function getChainMetadataSync(chainId: string): ChainMetadata | undefined{
+  return commonChains[chainId]
+}
+
+export const chainMap = commonChains
