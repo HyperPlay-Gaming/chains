@@ -10,11 +10,13 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5"
+    "vite": "^4.3.5",
+    "vitest": "^1.2.0"
   },
   "scripts": {
     "generateChainMap": "ts-node ./src/generateChainMap.ts",
-    "buildDist": "vite build"
+    "buildDist": "vite build",
+    "test": "vitest"
   },
   "dependencies": {
     "axios": "^1.4.0"
