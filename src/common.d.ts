@@ -9,6 +9,7 @@ interface Explorer {
 
 export interface EthListChainMetadata {
   name: string;
+  title?: string;
   chain: string;
   icon?: string;
   rpc: string[];
