@@ -11,8 +11,8 @@ function getUrlProperties(url: URL){
 /*
  * Preference is given to infura
  */
-export function processChainMetadata(meta: ChainMetadata, params: ChainMetadataParams){
-    if (params.INFURA_API_KEY){
+export function processChainMetadata(meta: ChainMetadata, params?: ChainMetadataParams){
+    if (params?.INFURA_API_KEY !== undefined){
       const infuraRPCs = meta.chain.rpc.filter(item => {
         const [isWebsocket, isInfura, isAlchemy] = getUrlProperties(new URL(item))
         return !isWebsocket && isInfura
@@ -24,7 +24,7 @@ export function processChainMetadata(meta: ChainMetadata, params: ChainMetadataP
       }
     }
 
-    if (params.ALCHEMY_API_KEY !== undefined){
+    if (params?.ALCHEMY_API_KEY !== undefined){
         const alchemyRPCs = meta.chain.rpc.filter(item => {
             const [isWebsocket, isInfura, isAlchemy] = getUrlProperties(new URL(item))
             return !isWebsocket && isAlchemy
@@ -35,7 +35,6 @@ export function processChainMetadata(meta: ChainMetadata, params: ChainMetadataP
             return
         }
     }
-    
     const rpcs = meta.chain.rpc.filter(item => {
         const [isWebsocket, isInfura, isAlchemy] = getUrlProperties(new URL(item))
         return !isWebsocket && !isAlchemy && !isInfura

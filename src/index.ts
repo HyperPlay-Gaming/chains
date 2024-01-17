@@ -10,18 +10,15 @@ export async function getChainMetadata(
   params?: ChainMetadataParams
 ): Promise<ChainMetadata> {
   if (Object.hasOwn(commonChains, chainId)) {
-    const meta = commonChains[chainId];
-    if (params !== undefined){
-      processChainMetadata(meta, params)
-    }
+    // deep clone so we don't modify the chain's rpc for subsequent calls
+    const meta = JSON.parse(JSON.stringify(commonChains[chainId]));
+    processChainMetadata(meta, params)
     return meta
   } 
   let metadata = await fetchChainMetadata(chainId);
   // deep clone so we don't modify the chain's rpc for subsequent calls
   metadata = JSON.parse(JSON.stringify(metadata))
-  if (params !== undefined){
-    processChainMetadata(metadata, params)
-  }
+  processChainMetadata(metadata, params)
   return metadata;
 }
 
