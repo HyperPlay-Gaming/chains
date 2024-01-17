@@ -9,7 +9,13 @@ export async function getChainMetadata(
   chainId: string,
   params?: ChainMetadataParams
 ): Promise<ChainMetadata> {
-  if (Object.hasOwn(commonChains, chainId)) return commonChains[chainId];
+  if (Object.hasOwn(commonChains, chainId)) {
+    const meta = commonChains[chainId];
+    if (params !== undefined){
+      processChainMetadata(meta, params)
+    }
+    return meta
+  } 
   let metadata = await fetchChainMetadata(chainId);
   // deep clone so we don't modify the chain's rpc for subsequent calls
   metadata = JSON.parse(JSON.stringify(metadata))
