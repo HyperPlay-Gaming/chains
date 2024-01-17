@@ -5,6 +5,17 @@ interface Explorer {
   name: string;
   url: string;
   standard: string;
+  icon?: string;
+}
+
+interface Bridge {
+  url: string;
+}
+
+interface Parent {
+  type: string;
+  chain: string;
+  bridges?: Bridge[]
 }
 
 export interface EthListChainMetadata {
@@ -27,6 +38,7 @@ export interface EthListChainMetadata {
     registry: string;
   };
   explorers?: Explorer[];
+  parent?: Parent;
 }
 
 export interface EthListChainIcon {
@@ -43,4 +55,9 @@ interface ChainMetadata {
 
 export interface ChainMap {
   [key: string]: ChainMetadata;
+}
+
+export interface ChainMetadataParams {
+  INFURA_API_KEY?: string,
+  ALCHEMY_API_KEY?: string
 }
