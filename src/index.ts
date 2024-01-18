@@ -5,25 +5,26 @@ import { fetchChainMetadata } from "./utils";
 import { processChainMetadata } from "./utils/processChainMetadata";
 const commonChains = chains as ChainMap;
 
+function processMetadata(metadata: ChainMetadata, params?: ChainMetadataParams){
+  // deep clone so we don't modify the chain's rpc for subsequent calls
+  const metadataCopy = JSON.parse(JSON.stringify(metadata));
+  processChainMetadata(metadataCopy, params)
+  return metadataCopy
+}
+
 export async function getChainMetadata(
   chainId: string,
   params?: ChainMetadataParams
 ): Promise<ChainMetadata> {
   if (Object.hasOwn(commonChains, chainId)) {
-    // deep clone so we don't modify the chain's rpc for subsequent calls
-    const meta = JSON.parse(JSON.stringify(commonChains[chainId]));
-    processChainMetadata(meta, params)
-    return meta
+    return processMetadata(commonChains[chainId], params)
   } 
   let metadata = await fetchChainMetadata(chainId);
-  // deep clone so we don't modify the chain's rpc for subsequent calls
-  metadata = JSON.parse(JSON.stringify(metadata))
-  processChainMetadata(metadata, params)
-  return metadata;
+  return processMetadata(metadata, params)
 }
 
-export function getChainMetadataSync(chainId: string): ChainMetadata | undefined{
-  return commonChains[chainId]
+export function getChainMetadataSync(chainId: string, params?: ChainMetadataParams): ChainMetadata | undefined{
+  return processMetadata(commonChains[chainId], params)
 }
 
 export const chainMap = commonChains
