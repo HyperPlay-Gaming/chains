@@ -1,0 +1,21 @@
+name: Release to npm
+
+on:
+  push:
+    paths:
+      - 'package.json'
+    branches:
+      - main
+
+jobs:
+  release:
+    uses: HyperPlay-Gaming/workflows/.github/workflows/npm_publish.yml@main
+    with:
+      node_version: '18'
+      pkg_manager: 'yarn'
+      install: 'yarn'
+      build: 'yarn buildDist'
+      publish: 'yarn publish'
+      pkg_manager_add_dev_dep: 'yarn add -D'
+    secrets:
+      NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'b

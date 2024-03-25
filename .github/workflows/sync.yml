@@ -1,0 +1,21 @@
+name: Chain Sync
+
+# run on the 1st and 15th of the month at midnight or on dispatch
+on:
+  schedule:
+    - cron: '0 * 1,15 * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    uses: HyperPlay-Gaming/workflows/.github/workflows/nodejs_commands.yml@main
+    with:
+      node_version: '16'
+      pkg_manager: 'yarn'
+      install: 'yarn install --immutable --frozen-lockfile'
+      name: 'sync'
+      command_one: 'yarn sync'
+      command_one_name: 'Sync chains and submit PR'
+      checkout_recursive: false
+    secrets:
+      NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
