@@ -18,4 +18,4 @@ jobs:
       publish: 'yarn publish'
       pkg_manager_add_dev_dep: 'yarn add -D'
     secrets:
-      NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'b
+      NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
