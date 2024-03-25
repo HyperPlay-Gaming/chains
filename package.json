@@ -16,7 +16,8 @@
   "scripts": {
     "generateChainMap": "ts-node ./src/generateChainMap.ts",
     "buildDist": "vite build",
-    "test": "vitest"
+    "test": "vitest",
+    "syncNewChains": "git checkout -b sync/testing && yarn generateChainMap && git add * && git commit -m 'update' && git push && gh pr create --title 'Sync Chains' --body 'Pull request body'"
   },
   "dependencies": {
     "axios": "^1.4.0"
