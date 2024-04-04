@@ -1,6 +1,6 @@
 {
   "name": "@hyperplay/chains",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A package to get chain metadata",
   "main": "src/index.js",
   "author": "Brett Cleary",
