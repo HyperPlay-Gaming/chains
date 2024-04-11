@@ -1,6 +1,6 @@
 {
   "name": "@hyperplay/chains",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "A package to get chain metadata",
   "main": "src/index.js",
   "author": "Brett Cleary",
@@ -25,6 +25,9 @@
     "axios": "^1.4.0"
   },
   "exports": {
-    ".": "./dist/index.es.js"
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
   }
 }
