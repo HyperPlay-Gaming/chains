@@ -24,4 +24,4 @@ Please submit a PR to https://github.com/ethereum-lists/chains with the appropri
 ## Developers
 ### Updating the chain map
 Run `yarn generateChainMap` and `yarn buildDist` in the root directory and then submit a PR with the updated map.
-Then bump the `package.json` version and run `npm publish`.
+Bump the `package.json` version before merging and the GHA will publish.
