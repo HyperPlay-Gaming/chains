@@ -3,6 +3,7 @@ import { ChainMap, ChainMetadata, ChainMetadataParams } from "./common.d";
 import chains from "./chains.json";
 import { fetchChainMetadata } from "./utils";
 import { processChainMetadata } from "./utils/processChainMetadata";
+import { parseChainMetadataToViemChain } from "./viem";
 const commonChains = chains as ChainMap;
 
 function processMetadata(metadata: ChainMetadata, params?: ChainMetadataParams){
@@ -18,7 +19,7 @@ export async function getChainMetadata(
 ): Promise<ChainMetadata> {
   if (Object.hasOwn(commonChains, chainId)) {
     return processMetadata(commonChains[chainId], params)
-  } 
+  }
   let metadata = await fetchChainMetadata(chainId);
   return processMetadata(metadata, params)
 }
@@ -28,3 +29,5 @@ export function getChainMetadataSync(chainId: string, params?: ChainMetadataPara
 }
 
 export const chainMap = commonChains
+
+export { parseChainMetadataToViemChain }
