@@ -3,7 +3,7 @@ import { getChainMetadata, getChainMetadataSync } from './index'
 
 test('get chain metadata ethereum public rpc', async () => {
     const meta = await getChainMetadata('1')
-    expect(meta.chain.rpc[0]).to.eq('https://api.mycryptoapi.com/eth')
+    expect(meta.chain.rpc[0]).to.eq('https://cloudflare-eth.com')
 })
 
 test('get chain metadata infura rpc', async () => {
@@ -18,7 +18,7 @@ test('get chain metadata alchemy rpc', async () => {
 
 test('get chain metadata sync ethereum public rpc', async () => {
     const meta = getChainMetadataSync('1')
-    expect(meta?.chain.rpc[0]).to.eq('https://api.mycryptoapi.com/eth')
+    expect(meta?.chain.rpc[0]).to.eq('https://cloudflare-eth.com')
 })
 
 test('get chain metadata sync infura rpc', async () => {

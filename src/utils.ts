@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ChainMap, EthListChainIcon, EthListChainMetadata } from "./common";
+import { viemChainsMap } from "./viem";
 
 let chainsCache: ChainMap = {};
 const fullUrl = "https://chainid.network/chains.json";
@@ -55,6 +56,12 @@ export const fetchAllChainMetadataMap = async () => {
   const allMetadata: ChainMap = {};
   for (const metadata_i of resp.data as EthListChainMetadata[]) {
     console.log("chain ", metadata_i.chainId);
+    const viemChain = viemChainsMap[metadata_i.chainId];
+
+    if (viemChain) {
+      metadata_i.rpc = [...viemChain.rpcUrls.default.http, ...metadata_i.rpc]
+    }
+
     allMetadata[metadata_i.chainId] = { chain: metadata_i };
     if (metadata_i.icon) {
       const iconData = await fetchIcon(metadata_i.icon);
