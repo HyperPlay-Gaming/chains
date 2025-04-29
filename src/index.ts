@@ -25,7 +25,10 @@ export async function getChainMetadata(
 }
 
 export function getChainMetadataSync(chainId: string, params?: ChainMetadataParams): ChainMetadata | undefined{
-  return processMetadata(commonChains[chainId], params)
+  if (Object.hasOwn(commonChains, chainId)) {
+    return processMetadata(commonChains[chainId], params)
+  }
+  return undefined
 }
 
 export const chainMap = commonChains
