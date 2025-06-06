@@ -11,11 +11,11 @@ jobs:
   release:
     uses: HyperPlay-Gaming/workflows/.github/workflows/npm_publish.yml@main
     with:
-      node_version: '18'
-      pkg_manager: 'yarn'
-      install: 'yarn'
-      build: 'yarn buildDist'
-      publish: 'yarn publish'
-      pkg_manager_add_dev_dep: 'yarn add -D'
+      node_version: '22'
+      pkg_manager: 'pnpm'
+      pkg_manager_add_dev_dep: 'pnpm add -D'
+      install: 'pnpm install --frozen-lockfile'
+      build: 'pnpm build'
+      publish: 'pnpm publish'
     secrets:
       NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
