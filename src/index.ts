@@ -33,4 +33,4 @@ export function getChainMetadataSync(chainId: string, params?: ChainMetadataPara
 
 export const chainMap = commonChains
 
-export { parseChainMetadataToViemChain }
+export { parseChainMetadataToViemChain, type ChainMetadata }
