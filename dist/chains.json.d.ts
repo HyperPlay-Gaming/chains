@@ -1,4 +1,4 @@
-{
+declare const _default: {
     "1": {
         "chain": {
             "name": "Ethereum Mainnet",
@@ -83907,4 +83907,6 @@
             }
         ]
     }
-}
+};
+
+export default _default;

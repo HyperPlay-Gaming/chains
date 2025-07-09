@@ -12,7 +12,7 @@
     "sourceMap": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "rootDir": ".",
+    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -29,5 +29,6 @@
     "noFallthroughCasesInSwitch": true,
     "strictPropertyInitialization": true,
     "outDir": "./dist"
-  }
+  },
+  "include": ["src"],
 }
