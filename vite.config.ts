@@ -1,10 +1,9 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   publicDir: "public",
-
-  plugins: [],
   build: {
     copyPublicDir: true,
     minify: "esbuild",
@@ -15,4 +14,5 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
   },
+  plugins: [dts()]
 });
