@@ -11,7 +11,7 @@ export default defineConfig({
       entry: resolve("src", "index.ts"),
       name: "Chains",
       formats: ["es", "cjs"],
-      fileName: (format) => `index.${format}.js`,
+      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
   },
   plugins: [dts()]
